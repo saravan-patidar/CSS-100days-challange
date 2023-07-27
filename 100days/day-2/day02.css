@@ -1,0 +1,131 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.frames{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 400px;
+    height: 400px;
+    background-color:rgba(13, 158, 81, 0.846) ;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+}
+ input.checkbox{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    z-index: 2;
+}
+.lines{
+    width:85px;
+    height: 10px;
+    background-color: #fcfafa;
+    margin: 12px 0;
+    border-radius: 5px;
+    transition: all .5s  cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+.checkbox:hover {
+    cursor: pointer;
+}
+input:checked~ .box-menu .line1{
+    animation: first-line-animation 600ms ease 0s 1 forwards;
+}
+input:checked~ .box-menu .line3{
+    animation: third-line-animation 600ms ease 0s 1 forwards;
+}
+input:checked~ .box-menu .line2{
+    animation: second-line-animation 600ms ease 0s 1 forwards;
+}
+@keyframes first-line-animation {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(22px);
+    }
+    100%{
+        transform: translateY(22px) rotate(42deg);
+    }
+}
+@keyframes third-line-animation {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-22px);
+    }
+    100%{
+        transform: translateY(-22px) rotate(142deg);
+    }
+}
+@keyframes second-line-animation {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(0);
+    }
+}
+
+input:not(:checked)~ .box-menu .line3{
+    animation: R-third-animation 600ms ease 0s 1 forwards;
+}
+input:not(:checked)~ .box-menu .line2{
+    animation: R-second-animation 600ms ease 0s 1 forwards;
+}
+input:not(:checked)~ .box-menu .line1{
+    animation: R-first-animation 600ms ease 0s 1 forwards;
+}
+
+@keyframes R-third-animation {
+    0%{
+        transform: translateY(-22px) rotate(142deg);
+    }
+    50%{
+        transform: translateY(-22px) rotate(0deg);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+@keyframes R-second-animation {
+    0%{
+        transform: scale(0);
+    }
+    50%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+@keyframes R-first-animation {
+    0%{
+        transform: translateY(22px) rotate(45deg);
+    }
+    50%{
+        transform: translateY(22px) rotate(0deg);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
